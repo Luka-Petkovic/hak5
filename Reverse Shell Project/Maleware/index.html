@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Einfache WebRTC-Belehrung</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('hintergrund.jpg'); /* Füge hier den Link zu deinem Hintergrundbild ein */
+            background-size: cover;
+        }
+        video {
+            border: 5px solid #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay></video>
+
+    <script>
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+    .then(function(stream) {
+        var video = document.querySelector('video');
+        video.srcObject = stream;
+        video.onloadedmetadata = function(e) {
+            video.play();
+        };
+    })
+    .catch(function(err) {
+        console.log(err.name + ": " + err.message);
+    });
+    </script>
+</body>
+</html>
